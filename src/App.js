@@ -1,25 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import './App.css';
+import axios from 'axios';
+
+
+// components
+import Navbar from './layout/Navbar';
+import Teams from './pages/Teams';
+
+axios.defaults.baseURL= 'https://statsapi.web.nhl.com/api/v1'; 
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router>
+        <Navbar/>
+        <div className="container">
+          <Switch>
+            <Route exact path="/teams" component={Teams}/>
+          </Switch>
+        </div>
+      </Router>
   );
 }
 
