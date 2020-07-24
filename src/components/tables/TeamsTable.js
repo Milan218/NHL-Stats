@@ -10,12 +10,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import withStyles from '@material-ui/core/styles/withStyles';
-
-
-const styles = (theme) => ({
-    ...theme.styles,
-}); 
+import Button from '@material-ui/core/Button';
+import Tooltip from '@material-ui/core/Tooltip';
 
 
 class TeamsTable extends Component {
@@ -64,13 +60,47 @@ class TeamsTable extends Component {
                     <Table stickyHeader aria-label="sticky table">
                         <TableHead>
                             <TableRow>
-                                <TableCell onClick={(event) => this.onSort(event, 'abbreviation')}>Abbreviation</TableCell>
-                                <TableCell onClick={(event) => this.onSort(event, 'name')}>Name</TableCell>
-                                <TableCell onClick={(event) => this.onSort(event, 'conference.name')}>Conference</TableCell>
-                                <TableCell onClick={(event) => this.onSort(event, 'division.name')}>Division</TableCell>
-                                <TableCell onClick={(event) => this.onSort(event, 'firstYearOfPlay')}>First season</TableCell>
-                                <TableCell onClick={(event) => this.onSort(event, 'venue.name   ')}>Stadium</TableCell>
-                                <TableCell onClick={(event) => this.onSort(event, 'abbreviation')}>Website</TableCell>
+                                <TableCell>
+                                    <Tooltip title="Sort" placement='top'>
+                                        <Button variant='contained' color='primary' onClick={(event) => this.onSort(event, 'abbreviation')}>Abbreviation</Button>
+                                    </Tooltip>
+                                </TableCell>
+
+                                <TableCell>
+                                    <Tooltip title="Sort" placement='top'>
+                                        <Button variant='contained' color='primary' onClick={(event) => this.onSort(event, 'name')}>Name</Button>
+                                    </Tooltip>
+                                </TableCell>
+
+                                <TableCell>
+                                    <Tooltip title="Sort" placement='top'>
+                                        <Button variant='contained' color='primary' onClick={(event) => this.onSort(event, 'conference.name')}>Conference</Button>
+                                    </Tooltip>
+                                </TableCell>
+
+                                <TableCell>
+                                    <Tooltip title="Sort" placement='top'>
+                                        <Button variant='contained' color='primary' onClick={(event) => this.onSort(event, 'division.name')}>Division</Button>
+                                    </Tooltip>
+                                </TableCell>
+
+                                <TableCell>
+                                    <Tooltip title="Sort" placement='top'>
+                                        <Button variant='contained' color='primary' onClick={(event) => this.onSort(event, 'firstYearOfPlay')}>Debut</Button>
+                                    </Tooltip>
+                                </TableCell>
+                                
+                                <TableCell>
+                                    <Tooltip title="Sort" placement='top'>
+                                        <Button variant='contained' color='primary' onClick={(event) => this.onSort(event, 'venue.name')}>Stadium</Button>
+                                    </Tooltip>
+                                </TableCell>
+                                
+                                <TableCell>
+                                    <Tooltip title="Sort" placement='top'>
+                                        <Button variant='contained' color='primary' onClick={(event) => this.onSort(event, 'website')}>Website</Button>
+                                    </Tooltip>
+                                </TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -82,7 +112,7 @@ class TeamsTable extends Component {
                                 <TableCell>{team.division.name}</TableCell>
                                 <TableCell>{team.firstYearOfPlay}</TableCell>
                                 <TableCell>{team.venue.name}</TableCell>
-                                <TableCell><Link color ='secondary'href={team.officialSiteUrl}>{team.officialSiteUrl}</Link></TableCell>
+                                <TableCell><Link color ='primary'href={team.officialSiteUrl}>{team.officialSiteUrl}</Link></TableCell>
                             </TableRow>
                         ))}
                         </TableBody>
@@ -98,4 +128,4 @@ TeamsTable.propTypes = {
     teams : PropTypes.array.isRequired,
 }
 
-export default withStyles(styles)(TeamsTable);
+export default TeamsTable;

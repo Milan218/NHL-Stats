@@ -18,6 +18,7 @@ class Navbar extends Component {
                         <HomeIcon></HomeIcon>
                     </Button>
                     <Button color='inherit' component={Link} to='/teams'>Teams</Button>
+                    {this.props.switchUI}
                 </Toolbar>
             </AppBar>
         )

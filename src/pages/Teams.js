@@ -44,7 +44,7 @@ class Teams extends Component {
             return <div>Error: {error.message}</div>;
         } else {
             return (
-                <Container maxWidth="md">
+                <Container maxWidth="lg">
                     {teamsMarkup}
                 </Container>
             )
